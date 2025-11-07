@@ -1,0 +1,45 @@
+// Import abstracts (variables, mixins, functions)
+@import './abstracts/variables';
+@import './abstracts/mixins';
+
+// Import base styles
+@import './base/reset';
+@import './base/typography';
+
+// Utility classes
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-4;
+  padding-right: $spacing-4;
+
+  @include respond-to('sm') {
+    max-width: $breakpoint-sm;
+  }
+
+  @include respond-to('md') {
+    max-width: $breakpoint-md;
+  }
+
+  @include respond-to('lg') {
+    max-width: $breakpoint-lg;
+  }
+
+  @include respond-to('xl') {
+    max-width: $breakpoint-xl;
+  }
+}
+
+// Common utility classes
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

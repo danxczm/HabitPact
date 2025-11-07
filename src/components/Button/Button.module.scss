@@ -1,0 +1,91 @@
+@import '@/styles/abstracts/variables';
+@import '@/styles/abstracts/mixins';
+
+.button {
+  @include button-reset;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-2;
+
+  border-radius: $radius-md;
+  font-weight: $font-weight-semibold;
+  transition: all $transition-base;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    transform: translateY(-1px);
+    box-shadow: $shadow-lg;
+  }
+
+  &:not(:disabled):active {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// Variants
+.primary {
+  background-color: $primary-600;
+  color: $text-inverse;
+
+  &:not(:disabled):hover {
+    background-color: $primary-700;
+  }
+}
+
+.secondary {
+  background-color: $gray-600;
+  color: $text-inverse;
+
+  &:not(:disabled):hover {
+    background-color: $gray-700;
+  }
+}
+
+.success {
+  background-color: $success;
+  color: $text-inverse;
+
+  &:not(:disabled):hover {
+    background-color: darken($success, 10%);
+  }
+}
+
+.danger {
+  background-color: $danger;
+  color: $text-inverse;
+
+  &:not(:disabled):hover {
+    background-color: darken($danger, 10%);
+  }
+}
+
+// Sizes
+.sm {
+  padding: $spacing-2 $spacing-3;
+  font-size: $font-size-sm;
+}
+
+.md {
+  padding: $spacing-3 $spacing-5;
+  font-size: $font-size-base;
+}
+
+.lg {
+  padding: $spacing-4 $spacing-6;
+  font-size: $font-size-lg;
+}
+
+// Full width
+.fullWidth {
+  width: 100%;
+}
