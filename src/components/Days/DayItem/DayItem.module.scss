@@ -1,0 +1,77 @@
+@import '@/styles/abstracts/mixins';
+
+.day-item {
+  position: relative;
+  flex-basis: 4.5rem;
+
+  &::after {
+    position: absolute;
+    content: attr(data-tooltip);
+    inset: -45% auto auto 50%;
+    z-index: -1;
+    translate: -50%;
+    padding: 0.25rem 0.5rem;
+    font-size: $font-size-sm;
+    color: #fff;
+    background: $info;
+    border-radius: $radius-sm;
+    opacity: 0;
+    visibility: hidden;
+    transition: inset 0.4s cubic-bezier(0.47, 2, 0.41, 1.5), visibility 0.3s ease-in-out,
+      opacity 0.2s ease-in-out;
+  }
+
+  &:has(.day-item-container:hover, .day-item-container:focus-visible)::after {
+    opacity: 1;
+    visibility: visible;
+    inset-block-start: -60%;
+  }
+
+  &-container {
+    position: relative;
+    @include flex-center;
+    aspect-ratio: 1;
+    font-size: $font-size-2xl;
+    color: $gray-800;
+    border: 1px solid;
+    border-radius: $radius-full;
+    outline: none;
+    overflow: hidden;
+    transition: color 0.3s ease-in-out;
+
+    &:hover,
+    &:focus-visible {
+      color: $text-inverse;
+
+      &::after {
+        inset-block-start: 0;
+      }
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      inset: 100% 0 0;
+      background: var(--bg, $primary-500);
+      pointer-events: none;
+      transition: inset 0.3s ease-in-out;
+    }
+
+    &__value {
+      position: relative;
+      z-index: 1;
+    }
+
+    &.failed {
+      background: $danger;
+    }
+
+    &.complete {
+      background: $success;
+    }
+
+    &.upcoming {
+      background: $info;
+    }
+  }
+}
