@@ -1,13 +1,19 @@
-import DaysList from '@/components/Days/DaysList/DaysList';
+'use client';
+
+import { useRouter } from 'next/navigation';
+import Button from '@/components/Button/Button';
 
 export default function Home() {
+  const router = useRouter();
+  const toSignUpPage = () => router.push('/signup');
+
   return (
     <div className="container" style={{ marginTop: '2rem' }}>
-      <h1>Challenge App</h1>
-      <p>Welcome to your challenge app!</p>
-      <div style={{ marginTop: '4rem' }}>
-        <DaysList />
-      </div>
+      <header>
+        <Button variant="primary" size="lg" type="submit" onClick={toSignUpPage}>
+          Sign Up
+        </Button>
+      </header>
     </div>
   );
 }

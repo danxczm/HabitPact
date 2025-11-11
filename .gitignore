@@ -1,15 +1,20 @@
-# Build and cache
-.next/
-.cache/
+# Node dependencies
 node_modules/
 
-# IDE
-.idea/
-.DS_Store
+# Build outputs
+.next/
+dist/
 
 # Env files
 .env
+.env.local
+.env.production
+.env.development
 
-# Prisma
-prisma/generated/
+# Prisma generated client (optional, can regenerate)
 src/generated/prisma/
+src/lib/generated/prisma/
+
+# Logs
+*.log
+
