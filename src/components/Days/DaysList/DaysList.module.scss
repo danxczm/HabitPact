@@ -1,0 +1,9 @@
+@import '@/styles/abstracts/mixins';
+
+.days_list {
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+  gap: 1rem;
+  list-style-type: none;
+}
