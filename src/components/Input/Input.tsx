@@ -65,6 +65,7 @@ export default function Input({
 
       <div className={styles.inputWrap}>
         <input
+          name={field}
           id={`input-${field}`}
           className={`${styles.input} ${error ? styles.invalid : ''}`}
           type={inferredType}

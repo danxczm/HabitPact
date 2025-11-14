@@ -3,14 +3,15 @@
 import { useState } from 'react';
 import styles from '@/components/Input/Input.module.scss';
 import Input from '@/components/Input/Input';
+import { registerEmail } from '../../../server/auth-actions';
 
-function SignUp() {
+export default function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   return (
     <div className="container" style={{ marginTop: '2rem' }}>
-      <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+      <form className={styles.form} action={registerEmail}>
         <Input
           field="name"
           label="Full name"
@@ -43,5 +44,3 @@ function SignUp() {
     </div>
   );
 }
-
-export default SignUp;
