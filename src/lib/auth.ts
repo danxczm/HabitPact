@@ -1,7 +1,7 @@
+import { Resend } from 'resend';
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
 import prisma from './prisma';
-import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -16,11 +16,13 @@ export const auth = betterAuth({
   emailVerification: {
     sendVerificationEmail: async ({ user, url }) => {
       await resend.emails.send({
-        from: 'HabitPact@resend.dev>',
+        from: 'onboarding@resend.dev',
         to: user.email,
         subject: 'Verify your email',
         html: `<p>Click <a href="${url}">here</a> to verify your email</p>`,
-      })
-    }
+      });
+    },
   },
+  // sendOnSignUp: true,
+  // autoSignInAfterVerification: true,
 });

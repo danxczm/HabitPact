@@ -28,6 +28,8 @@ export default function Input({
   const inferredType: string =
     field === 'email' ? 'email' : field === 'password' ? 'password' : 'text';
 
+  const inferredMinLength: number = field === 'email' ? 0 : field === 'password' ? 6 : 0;
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setVal(e.target.value);
     onChange?.(e.target.value);
@@ -69,12 +71,15 @@ export default function Input({
           id={`input-${field}`}
           className={`${styles.input} ${error ? styles.invalid : ''}`}
           type={inferredType}
+          autoComplete="off"
+          minLength={inferredMinLength}
           value={val}
           placeholder={placeholder}
           onChange={handleChange}
           onBlur={handleBlur}
           aria-invalid={!!error}
           aria-describedby={error ? `err-${field}` : undefined}
+          required={required}
         />
       </div>
 
